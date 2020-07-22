@@ -1,0 +1,76 @@
+body{
+  margin: 0;
+  font-family: sans-serif;
+  background-color: rgb(53, 54, 58);
+  color: #fff;
+}
+.page-title{
+  position: absolute;
+  top: 10px;
+  width: 100%;
+  text-align: center;
+  font-weight: lighter;
+}
+#form-btns-container{
+  margin: 0 auto;
+  width: 90%;
+  height: 100vh;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+}
+.form-btn{
+  min-width: 80px;
+  min-height: 80px;
+  padding: 20px;
+  margin: 10px;
+  transition: 0.1s linear;
+  cursor: pointer;
+  text-align: center;
+}
+.form-btn:hover .btn-icon{
+  background-size: auto 65%;
+  transition: 0.1s linear;
+}
+.btn-title{
+  margin-top: 10px;
+  width: 100%;
+  text-align: center;
+  font-size: 18pt;
+}
+.btn-icon{
+  background-color: #fff;
+  margin: 0 auto;
+  width: 70px;
+  height: 70px;
+  background-size: auto 60%;
+  background-repeat: no-repeat;
+  background-position: center;
+  border-radius: 50%;
+}
+
+#btn-adotante:hover{
+  color: #42a5f5;
+}
+#icon-adotante{
+  background-image: url("../_img/personIdIcon.png");
+}
+#btn-animal:hover{
+  color: #f3ec42;
+}
+#icon-animal{
+  background-image: url("../_img/petIdIcon.png");
+}
+#btn-adocao:hover{
+  color: #ffb0aa;
+}
+#icon-adocao{
+  background-image: url("../_img/adoptIcon.png");
+}
+#btn-devolucao:hover{
+  color: #e50058;
+}
+#icon-devolucao{
+  background-image: url("../_img/returnIcon.png");
+}

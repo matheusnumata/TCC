@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="pt-br" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title>Cadastro de Adotante</title>
+    <link rel="stylesheet" href="/_css/estiloFormulario.css" type="text/css">
+    <script src="/_scripts/mascaras.js" type="text/javascript"></script>
+    <script src="/_scripts/clipboardFunctions.js" type="text/javascript"></script>
+    <script src="/_scripts/pesquisaCEP.js" type="text/javascript"></script>
+  </head>
+  <body>
+    <script type="text/javascript">
+
+    </script>
+    <div class="form-container" id="form-container">
+      <div class="form-header">
+        <div class="back-btn" onclick="location.href = '/index'" style="background-color: #42a5f5; border:1px solid #42a5f5;"></div>
+        <h1 class="form-name">Cadastro de Adotante:</h1>
+        <div class="form-icon" id="icon-adotante"></div>
+      </div>
+
+      <form class="" action="/cadastrar_adotante" method="post">
+        <style>
+          .input-container:hover{border: 2px solid #42a5f5;}
+          .input-container:hover h1{color: #42a5f5;}
+        </style>
+        <!-- Dados PESSOAIS do adotante -->
+        <div class="input-container medium-container">
+          <h1>Nome:</h1>
+          <input class="text-input" type="text" name="nomeAdotante" id="input1" value="José João" required>
+        </div>
+        <div class="input-container medium-container">
+          <h1>Sobrenome:</h1>
+          <input class="text-input" type="text" name="sobrenomeAdotante" id="input2" value="Silva" required>
+        </div>
+        <div class="input-container small-container">
+          <h1>RG:</h1>
+          <input class="text-input" type="text" name="rgAdotante" id="input3" value="00.000.000-0">
+        </div>
+        <div class="input-container small-container">
+          <h1>CPF:</h1>
+          <input maxlength="14" class="text-input" type="text" name="cpfAdotante" id="input4" value="000.000.000-00" required onkeydown="javascript: fMasc( this, mCPF );">
+        </div>
+        <div class="input-container small-container">
+          <h1>Nascimento:</h1>
+          <input maxlength="10" class="text-input" type="text" id="campoData" name="nascimentoAdotante" id="input5" value="10/08/1985" required onkeydown="javascript: fMasc( this, mDate );">
+        </div>
+
+        <!-- Dados RESIDENCIAIS do adotante -->
+        <div class="input-container small-small-container">
+          <h1>CEP:</h1>
+          <input maxlength="10" class="text-input" type="text" name="cepAdotante" id="cep" value="00000-000" onkeydown="javascript: fMasc( this, mCEP );" onfocusout="pesquisacep(this.value);">
+        </div>
+        <div class="input-container medium-container">
+          <h1>Rua:</h1>
+          <input class="text-input" type="text" name="ruaAdotante" id="rua" value="Rua dos Silva" required>
+        </div>
+        <div class="input-container small-small-container">
+          <h1>Número:</h1>
+          <input class="text-input" type="text" name="numeroAdotante" id="numero" value=" 666" required onkeydown="javascript: fMasc( this, mNum );">
+        </div>
+        <div class="input-container small-container">
+          <h1>Complemento:</h1>
+          <input class="text-input" type="text" name="complementoAdotante" id="complemento" value="Apartamento 66">
+        </div>
+        <div class="input-container small-container">
+          <h1>Bairro:</h1>
+          <input class="text-input" type="text" name="bairroAdotante" id="bairro" value="Vila dos Silva" required>
+        </div>
+        <div class="input-container small-container">
+          <h1>Cidade:</h1>
+          <input class="text-input" type="text" name="cidadeAdotante" id="cidade" value="Silvalópolis" required>
+        </div>
+
+        <!-- CONTATOS do adotante -->
+        <div class="input-container medium-container">
+          <h1>Telefone:</h1>
+          <input maxlength="14" class="text-input" type="text" name="telefoneAdotante"id="input12" value="(66)6666-6666" onkeydown="javascript: fMasc( this, mTel );">
+        </div>
+        <div class="input-container medium-container">
+          <h1>E-mail:</h1>
+          <input class="text-input" type="text" name="emailAdotante"id="input13" value="josejoaosilva@gmail.com">
+        </div>
+
+        <div class="send-btn-container">
+          <input class="input-btn" type="submit" name="" value="CADASTRAR" style="background-color: #42a5f5;">
+        </div>
+      </form>
+    </div>
+  </body>
+</html>

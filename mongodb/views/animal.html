@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="pt-br" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title>Cadastro de Animal</title>
+    <link rel="stylesheet" href="/_css/estiloFormulario.css" type="text/css">
+    <script src="/_scripts/mascaras.js" type="text/javascript"></script>
+  </head>
+  <body>
+    <div class="form-container">
+      <div class="form-header">
+        <div class="back-btn" onclick="location.href = 'index.html'"></div>
+        <h1 class="form-name">Cadastro de Animal:</h1>
+        <div class="form-icon" id="icon-animal"></div>
+      </div>
+
+      <form class="" action="/cadastrar_animal" method="post">
+
+        <div class="input-container medium-container">
+          <h1>Nome:</h1>
+          <input class="text-input" type="text" name="nomeAnimal" id="input1" value="">
+        </div>
+        <div class="input-container medium-container">
+          <h1>Voluntário responsável:</h1>
+          <input class="text-input" type="text" name="voluntarioAnimal" id="input2" value="">
+        </div>
+
+        <div class="input-container small-container">
+          <h1>Chip:</h1>
+          <input class="text-input" type="text" name="chipAnimal" id="input3" value="">
+        </div>
+        <div class="input-container small-container">
+          <h1>Raça:</h1>
+          <input class="text-input" type="text" name="racaAnimal" id="input4" value="">
+        </div>
+        <div class="input-container small-container">
+          <h1>Cor:</h1>
+          <input class="text-input" type="text" name="corAnimal" id="input5" value="">
+        </div>
+
+        <div class="input-container small-container">
+          <h1>Nascimento:</h1>
+          <input maxlength="10" class="text-input" type="text" name="nascimentoAnimal" id="input6" value="" onkeydown="javascript: fMasc( this, mDate );">
+        </div>
+        <div class="input-container small-container">
+          <h1>Tipo:</h1>
+          <div class="radio-group">
+            <div class="radio-container">
+              <input class="radio" type="radio" value="cachorro" id="input7" name="tipoAnimal"><br>
+              <label for="input1">Cão</label>
+            </div>
+            <div class="radio-container">
+              <input class="radio" type="radio" value="gato" id="input8" name="tipoAnimal"><br>
+              <label for="input2">Gato</label>
+            </div>
+          </div>
+        </div>
+        <div class="input-container small-container">
+          <h1>Sexo:</h1>
+          <div class="radio-group">
+            <div class="radio-container">
+              <input class="radio" type="radio" value="macho" id="input9" name="sexoAnimal"><br>
+              <label for="input3">Macho</label>
+            </div>
+            <div class="radio-container">
+              <input class="radio" type="radio" value="femea" id="input10" name="sexoAnimal"><br>
+              <label for="input4">Femea</label>
+            </div>
+          </div>
+        </div>
+
+        <div class="input-container small-container">
+          <h1>Castrado?</h1>
+          <div class="radio-group">
+            <div class="radio-container">
+              <input class="radio" type="radio" value="sim" id="input11" name="castradoAnimal"><br>
+              <label for="input3">Sim</label>
+            </div>
+            <div class="radio-container">
+              <input class="radio" type="radio" value="nao" id="input12" name="castradoAnimal"><br>
+              <label for="input4">Não</label>
+            </div>
+          </div>
+        </div>
+        <div class="input-container small-container">
+          <h1>Vacinado?</h1>
+          <div class="radio-group">
+            <div class="radio-container">
+              <input class="radio" type="radio" value="sim" id="input13" name="vacinadoAnimal"><br>
+              <label for="input3">Sim</label>
+            </div>
+            <div class="radio-container">
+              <input class="radio" type="radio" value="nao" id="input14" name="vacinadoAnimal"><br>
+              <label for="input4">Não</label>
+            </div>
+          </div>
+        </div>
+        <div class="input-container small-container">
+          <h1>Vermifugado?</h1>
+          <div class="radio-group">
+            <div class="radio-container">
+              <input class="radio" type="radio" value="sim" id="input15" name="vermifugoAnimal"><br>
+              <label for="input3">Sim</label>
+            </div>
+            <div class="radio-container">
+              <input class="radio" type="radio" value="nao" id="input16" name="vermifugoAnimal"><br>
+              <label for="input4">Não</label>
+            </div>
+          </div>
+        </div>
+
+        <div class="send-btn-container">
+          <input class="input-btn" type="submit" name="" value="CADASTRAR" style="background-color: #f3ec42;">
+        </div>
+      </form>
+    </div>
+  </body>
+</html>

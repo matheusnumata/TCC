@@ -1,4 +1,4 @@
-# Importando as bibliotecas que iremos utilizar:
+#importar bibliotecas
 from nltk import word_tokenize
 import nltk
 import re
@@ -16,64 +16,48 @@ from nltk.tokenize import TweetTokenizer
 from sklearn.pipeline import Pipeline
 from sklearn.metrics import accuracy_score
 
-# Lendo a base de dados:
+#ler o dataset
 df = pd.read_csv('dados_treino.csv', encoding='utf-8')
-
 df2 = pd.read_csv('dados_teste.csv', encoding='utf-8')
 
-
-df.head().T
-
-# Número de linhas da coluna ‘Text’:
-df.Tweet.count()
-
-# Removendo os valores duplicados:
+#removendo os valores duplicados
 df.drop_duplicates(['Tweet'], inplace=True)
 
-df.Tweet.count()
-
-# Separando tweets e suas classes:
+#separar tweets e suas classes
 tweets = df['Tweet']
 classificacao = df['Sentimento']
 tweets2 = df2['Tweet']
 classificacao2 = df2['Sentimento']
 
+#função de pré-processamento
 def Preprocessing(instancia):
     instancia = re.sub(r"http\S+", "", instancia).lower().replace('.','').replace(';','').replace('-','').replace(':','').replace(')','').replace('"','')
     stopwords = set(nltk.corpus.stopwords.words('portuguese'))
     palavras = [i for i in instancia.split() if not i in stopwords]
     return (" ".join(palavras))
 
-# Aplica a função em todos os dados:
+#aplicar a função em todos os dados
 tweets = [Preprocessing(i) for i in tweets]
 tweets2 = [Preprocessing(i) for i in tweets2]
 
-# Antes:
-tweets[:10]
-
+#instanciar o objeto que faz a vetorização dos dados
 tweet_tokenizer = TweetTokenizer() 
-
-# Instancia o objeto que faz a vetorização dos dados de texto:
 vectorizer = CountVectorizer(analyzer="word", tokenizer=tweet_tokenizer.tokenize)
 
-# Aplica o vetorizador nos dados de texto e retorna uma matriz esparsa ( contendo vários zeros):
+#aplicar o vetorizador nos dados e retorna uma matriz esparsa
 freq_tweets = vectorizer.fit_transform(tweets)
+freq_testes = vectorizer.transform(tweets2)
 type(freq_tweets)
 
-# Visualizando o número de linhas e colunas da matriz:
+#visualizar o número de linhas e colunas da matriz:
 freq_tweets.shape
 
-#print(freq_tweets.shape)
-
-# Treino de modelo de Machine Learning:
+#modelagem do modelo
 modelo = MultinomialNB()
 modelo.fit(freq_tweets,classificacao)
 
-freq_testes = vectorizer.transform(tweets2)
+esperado = classificacao2
+previsao = modelo.predict(freq_testes)
 
-expected = classificacao2
-predicted = modelo.predict(freq_testes)
-
-# summarize the fit of the model
-print(metrics.classification_report(expected, predicted))
-print(metrics.confusion_matrix(expected, predicted))
+print(metrics.classification_report(esperado, previsao))
+print(metrics.confusion_matrix(esperado, previsao))

@@ -5,29 +5,30 @@ import re
 import pandas as pd
 from sklearn.feature_extraction.text import CountVectorizer
 from sklearn.naive_bayes import MultinomialNB
-from sklearn.naive_bayes import GaussianNB
 from sklearn import svm
 from sklearn import metrics
 from sklearn.metrics import accuracy_score, classification_report, confusion_matrix
 from nltk.classify.scikitlearn import SklearnClassifier
 from sklearn.model_selection import cross_val_predict
-from sklearn.naive_bayes import MultinomialNB,BernoulliNB
 from nltk.tokenize import TweetTokenizer
 from sklearn.pipeline import Pipeline
 from sklearn.metrics import accuracy_score
 
 #ler o dataset
-df = pd.read_csv('dados_treino.csv', encoding='utf-8')
+df = pd.read_csv('dados_treino_1000.csv', encoding='utf-8')
 df2 = pd.read_csv('dados_teste.csv', encoding='utf-8')
 
 #removendo os valores duplicados
 df.drop_duplicates(['Tweet'], inplace=True)
+df2.drop_duplicates(['Tweet'], inplace=True)
+df.dropna(axis=0, how='all')
+df2.dropna(axis=0, how='all')
 
 #separar tweets e suas classes
 tweets = df['Tweet']
-classificacao = df['Sentimento']
+sentimento = df['Sentimento']
 tweets2 = df2['Tweet']
-classificacao2 = df2['Sentimento']
+sentimento2 = df2['Sentimento']
 
 #função de pré-processamento
 def Preprocessing(instancia):
@@ -52,12 +53,16 @@ type(freq_tweets)
 #visualizar o número de linhas e colunas da matriz:
 freq_tweets.shape
 
+print(freq_tweets.data[0:5])
+
 #modelagem do modelo
 modelo = MultinomialNB()
-modelo.fit(freq_tweets,classificacao)
+modelo.fit(freq_tweets,sentimento)
 
-esperado = classificacao2
+esperado = sentimento2
 previsao = modelo.predict(freq_testes)
 
 print(metrics.classification_report(esperado, previsao))
 print(metrics.confusion_matrix(esperado, previsao))
+
+print("Precisão: ", metrics.accuracy_score(esperado, previsao))

@@ -24,26 +24,21 @@ auth.set_access_token('957936725275365376-SmyN2POrnlLlXvDUd0AvccUL1d2lwQH', 'Vp0
 
 api = tweepy.API(auth, wait_on_rate_limit=True)
 
-with open ('xingamentos-badwords.csv', newline='') as f:
-    reader = csv.reader(f)
-    badwords = list(reader)
-
-max_tweets = 30000
-query = "morte OR puta que pariu OR vai se fuder OR caralho OR filho da puta OR desgraça OR merda OR morra OR morre OR foda-se"
-query2 = ''
+query_treino = "morte OR puta que pariu OR vai se fuder OR caralho OR filho da puta OR desgraça OR merda OR morra OR morre OR foda-se"
+query_teste = "futebol OR felicidade OR neutro OR feliz OR normal -filter:retweets"
 
 public_tweets2 = tweepy.Cursor(api.search,
-                                q=query,
-                               lang="pt-br",).items(1500)
+                               q="morte OR puta que pariu OR vai se fuder OR caralho OR filho da puta OR desgraça OR merda OR morra OR morre OR foda-se -filter:retweets",
+                               lang="pt-br",).items(1000)
 
-with open('dados_treino.csv', 'w', encoding='utf=8') as csvFile:
-            writer = csv.writer(csvFile, delimiter=',', dialect='excel', quotechar =  '"')
+with open('dados_treino_1000.csv', 'w', encoding='utf=8') as csvFile:
+            writer = csv.writer(csvFile, delimiter=',', dialect='excel')
             writer.writerow(["ID",
                             "Usuário",
                             "Tweet",
                             "Seguidores",
-                            "Polarity",
-                            "Subjectivity",
+                            "Polaridade",
+                            "Subjetividade",
                             "Sentimento"]) 
             for tweet in public_tweets2:
                 frase = tweet.text 
